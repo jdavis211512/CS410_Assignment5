@@ -21,7 +21,7 @@
                 if($user[0]['Password'] == sha1($password))
                 {
                     $_SESSION['userid'] = $user[0]['Userid'];
-                    header('Location: userprofile.php');
+                    header('Location: orders.php');
                 }
                 else
                 {
