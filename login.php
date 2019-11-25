@@ -1,6 +1,13 @@
+<?php
+ini_set('display_errors',1);
+ini_set("display_startup_errors",1);
+error_reporting(E_ALL);
+?>
+
 <html>
 <head>
-    <?php include "db.php";
+    <?php include_once "db.php";
+    session_start();
     if(!empty($_POST))
     {
         if(!empty($_POST['login']))
@@ -21,7 +28,7 @@
                 if($user[0]['Password'] == sha1($password))
                 {
                     $_SESSION['userid'] = $user[0]['Userid'];
-                    header('Location: orders.php');
+                    header('Location:orders.php');
                 }
                 else
                 {
@@ -41,7 +48,8 @@
     Password: <input type="password" name="password"/><br><br>
     <input type="submit" name="login" value="Login"/><br><br>
     <span class="error"><?php if(!empty($error)) foreach($error as $e) echo $e . "<br>"; ?></span>
-</form>
+</form><br>
+<a href="createuser.php">New User</a>
 </body>
 </html>
 
